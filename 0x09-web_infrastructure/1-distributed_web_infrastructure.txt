@@ -1,0 +1,31 @@
+Web infrastructure design
+
+Task 0.
+Definitions and Explanations.
+1)For every additional element, why are adding it; Adding two new servers and a load balancer so that the load is split
+between the three servers
+2. What distribution algorithm your load balancer is configured with and how it
+works; Our load balancer uses the Round Robin algorithm which rotates between the servers when serving requests
+3. Is your load-balancer enabling an Active-Active or Active-Passive setup, explain
+the difference between both; the load balancer uses an Active-Active setup where both servers are online and ready to serve
+this improves performance. in an Active-Passive setup, one server is online and the other is onstanby. here there is 
+no single point of failure but the performance is the same as the single server setup
+4. How a database Primary-Replica (Master-Slave) cluster works; master-slave
+replication enables data from one database server (the master) to be replicated to
+one or more other database servers (the slaves). The master logs the updates, which
+then ripple through the slaves. If the changes are made to the master and slave at
+the same time, it is synchronous. If changes are queued up and written later, it is
+asynchronous. It is usually used to spread read access on multiple servers for
+scalability, although it can also be used for other purposes such as for failover, or
+analyzing data on the slave in order not to overload the master.
+5. What is the difference between the Primary node and the Replica node in regard to
+the application; A replica node is a copy of the primary node, they provide redundant
+copies of the application codebase to protect against hardware failure and increase
+Issues
+A. SPOF (Single Point Of Failure); there are three servers now a a single server failing will not take out the system, but there is a sole load balancer and when that fails, the system is taken out of action
+B. Security Issues: there are no firewalls or security measures in the server and it can be illegally by an attacker who may be in the middle
+C. No monitoring; “You cannot fix or improve what you cannot measure” is a famous
+saying in the tech industry. Monitoring the server, website, or application in general,
+would allow the owner to identify any problems, downtime, or security threats and resolve
+them quickly before they turn into a serious problem. It will also improve productivity and
+possibly save some costs on IT support. As well as improve user experience in general.

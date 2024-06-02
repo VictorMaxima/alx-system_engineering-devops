@@ -1,0 +1,18 @@
+Web infrastructure design
+
+Task 0.
+Definitions and Explanations.
+1. What is a server; A server is a device, a virtual device or computer program or providing
+functionality for other programs or devices, called “clients”.
+2. What is the role of a domain name; A domain name is a label that can be used to identify internet resources. it is a kind of
+easier-to-memorize nickname for ipaddresses
+3. What type of DNS record www is in www.foobar.com; It is a ‘cname’.
+4. What is the role of the Web Server; the webserver receives requests from the client and deliver requested information and webpages to endusers
+5. What is the role of the application server: it is used to execute serverside code and modify the requests being sent to the client
+6. What is the role of the database; the database stores the data in the server system and manages it for easy retrieval and modification
+7. What is the server using to communicate with the computer of the user requesting
+the website; The server communicates through HTTP protocol.
+Issues
+A. SPOF (Single Point Of Failure); due to a linear connectivity of the model, once a component fails the system is taken out
+B. Downtime when maintenance is needed: this is due to the fact that there are no other options for the components of the system, if one is offline, the system is offline
+C. Cannot scale if too much incoming traffic; The domain name points directly at the server and a server can only handle so much requests at a time. once the number of requests increases, the system will struggle
