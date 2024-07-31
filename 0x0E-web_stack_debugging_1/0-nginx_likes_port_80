@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
-# configures a server to listening on port 80 of all server's active IPv4 IPs
+# configures a server to listening on port 80 of all server's active IPv4 I
+# Backup the existing Nginx configuration
+sudo cp /etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default.bak
 
+# Change the port from 8080 to 80 in the configuration file
 sudo sed -i "s/8080/80/" /etc/nginx/sites-enabled/default
-sudo service nginx restart
+
+# Test the Nginx configuration for errors
+if sudo nginx -t; then
+    # Restart Nginx if the configuration is valid
+    sudo systemctl restart nginx
+    echo "Nginx has been restarted with port 80."
+else
+    echo "Nginx configuration test failed. Please check the configuration."
+fi
